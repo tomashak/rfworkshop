@@ -27,7 +27,7 @@ Web test
 Api test
     [Documentation]   dfdfdf
     [Tags]  api
-    ${headers}=  Create Dictionary  Content-type=Application/JSON
+    ${headers}=  Create Dictionary  Content-Type=multipart/form-data; boundary=<calculated when request is sent>
     #api/productsList
     ${resp}=  GET On Session  eshop  /productsList  headers=${headers}
     Status Should Be                 200  ${resp}  msg=Status code should be 200    
@@ -35,7 +35,9 @@ Api test
     ${respjson}=  Set Variable  ${resp.json()}
     log  ${respjson}[products][0][name]
 
-    ${resp2}=  POST On Session  eshop  /searchProduct  headers=${headers}
+    ${data}=  Create Dictionary  search_product=top
+    ${resp2}=  POST On Session  eshop  /searchProduct  headers=${headers}  data=${data}
+    Status Should Be                 200  ${resp2}  msg=Status code should be 200 
  
 
 
