@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.12.1 on win32)" generated="2024-03-28T12:15:45.866958" rpa="false" schemaversion="5">
+<suite id="s1" name="Webtests" source="C:\_GIT\rfworkshop\tests\webtests.robot">
+<test id="s1-t1" name="Web test" line="35">
+<kw name="Start our test" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-03-28T12:15:46.222987" level="INFO">Opening browser 'chrome' to base url 'https://automationexercise.com/products'.</msg>
+<arg>https://automationexercise.com/products</arg>
+<arg>browser=chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-28T12:15:46.220986" elapsed="6.401544"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-03-28T12:15:52.623543" elapsed="0.167115"/>
+</kw>
+<status status="PASS" start="2024-03-28T12:15:46.219986" elapsed="6.570672"/>
+</kw>
+<kw name="Product search">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>locator=${input_Search}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-03-28T12:15:52.796657" elapsed="0.051531"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2024-03-28T12:15:52.894749" level="INFO">Element '//h2[contains(@class,"title")]' contains text 'ALL PRODUCTS'.</msg>
+<arg>locator=${h2_title}</arg>
+<arg>expected=ALL PRODUCTS</arg>
+<arg>message=Title should be ALL Products</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2024-03-28T12:15:52.849184" elapsed="0.045565"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-03-28T12:15:52.895756" level="INFO">Typing text 'top' into text field '//input[@id="search_product"]'.</msg>
+<arg>${input_Search}</arg>
+<arg>text=${what}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-28T12:15:52.894749" elapsed="0.219531"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-03-28T12:15:53.115292" level="INFO">Clicking element 'submit_search'.</msg>
+<arg>locator=${search_click_btn}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-28T12:15:53.114280" elapsed="2.004249"/>
+</kw>
+<arg>top</arg>
+<doc>Fill term to search input 
+druhy radek</doc>
+<status status="PASS" start="2024-03-28T12:15:52.793659" elapsed="2.325867"/>
+</kw>
+<kw name="Check results">
+<kw name="Wait Until Element Contains" owner="SeleniumLibrary">
+<arg>locator=${h2_title}</arg>
+<arg>text=SEARCHED PRODUCTS</arg>
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<status status="PASS" start="2024-03-28T12:15:55.121529" elapsed="0.079994"/>
+</kw>
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2024-03-28T12:15:55.216665" level="INFO">${curUrl} = https://automationexercise.com/products?search=top</msg>
+<var>${curUrl}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2024-03-28T12:15:55.202524" elapsed="0.014141"/>
+</kw>
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2024-03-28T12:15:55.230523" level="INFO">Current location contains 'top'.</msg>
+<arg>expected=${what}</arg>
+<arg>message=Check URL for search param, expected topx, actual: ${curUrl}</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2024-03-28T12:15:55.217530" elapsed="0.012993"/>
+</kw>
+<arg>top</arg>
+<doc>lorem ipsum</doc>
+<status status="PASS" start="2024-03-28T12:15:55.120525" elapsed="0.109998"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-03-28T12:15:55.231524" elapsed="2.396046"/>
+</kw>
+<timeout value="1 minute"/>
+<status status="PASS" start="2024-03-28T12:15:46.218987" elapsed="11.410548"/>
+</test>
+<status status="PASS" start="2024-03-28T12:15:45.869958" elapsed="11.766549"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Webtests">Webtests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
