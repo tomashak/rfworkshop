@@ -15,4 +15,7 @@ Connect to MySQL Database
     Connect To Database    dbapiModuleName=${DB_DRIVER}  dbName=${DB_NAME}    dbUsername=${DB_USER}    dbPassword=${DB_PASSWORD}    dbHost=${DB_HOST}    dbPort=${DB_PORT}
     @{result}=    Query    SELECT * FROM testusers
     Log Many    ${result}
+    FOR  ${record}  IN  @{result}
+       Log To Console  ${record}[2]
+    END
     Disconnect From Database

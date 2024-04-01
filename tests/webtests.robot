@@ -34,10 +34,19 @@ Api test
     log  ${resp.json()}
     ${respjson}=  Set Variable  ${resp.json()}
     log  ${respjson}[products][0][name]
+    FOR  ${item}  IN  @{respjson}[products]
+        Log To Console  ${item}[name] + ${item}[price]
+    END
+    ${numbers} =  Create List  1 2 3 4 5 6 7 0
+    FOR  ${number}  IN  @{numbers}
+       Log To Console  ${number}
+    END
+    
 
     ${data}=  Create Dictionary  search_product=top
     ${resp2}=  POST On Session  eshop  /searchProduct  headers=${headers}  data=${data}
-    Status Should Be                 200  ${resp2}  msg=Status code should be 200 
+    Status Should Be                 200  ${resp2}  msg=Status code should be 200
+
  
 
 
